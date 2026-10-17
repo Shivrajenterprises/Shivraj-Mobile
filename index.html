@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shivraj Enterprises (Mobile Shopy)</title>
+<meta name="description" content="Shivraj Enterprises Mobile Shopy - latest offers ke liye follow karein">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --blue:#2D8CFF; --red:#E5322D; --text:#EAF1FA; --muted:#93A6BE; --glass:rgba(255,255,255,.08); --line:rgba(160,195,255,.22); }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:'Hind',system-ui,sans-serif; color:var(--text); min-height:100vh; min-height:100dvh; overflow-x:hidden; background:linear-gradient(180deg,#0A1020,#05070D); background-attachment:fixed; }
+  /* aurora light + film grain background */
+  .orb { position:fixed; border-radius:50%; filter:blur(80px); pointer-events:none; animation:drift 16s ease-in-out infinite alternate; }
+  .o1 { width:360px; height:360px; background:#2D8CFF; opacity:.5; top:-110px; left:-90px; }
+  .o2 { width:320px; height:320px; background:#7B3FE4; opacity:.42; right:-120px; top:36%; animation-delay:-5s; }
+  .o3 { width:280px; height:280px; background:#E5322D; opacity:.3; bottom:-90px; left:6%; animation-delay:-9s; }
+  @keyframes drift { to { transform:translate(46px,34px) scale(1.18); } }
+  body::after { content:""; position:fixed; inset:0; pointer-events:none; opacity:.09; mix-blend-mode:overlay;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+  main { position:relative; z-index:1; width:100%; max-width:430px; margin:0 auto; padding:38px 18px 28px; text-align:center; }
+  .logo { display:inline-flex; align-items:center; gap:10px; }
+  .logo svg { width:30px; height:46px; filter:drop-shadow(0 0 10px rgba(229,50,45,.55)); }
+  .logo .w { text-align:left; line-height:1; }
+  .logo b { display:block; font-family:'Sora',sans-serif; font-weight:800; font-size:1.9rem; letter-spacing:.5px; }
+  .logo small { display:block; margin-top:5px; font-family:'Sora',sans-serif; font-weight:600; font-size:.58rem; letter-spacing:4.5px; color:var(--blue); }
+  h1 { font-family:'Sora',sans-serif; font-weight:700; font-size:1.28rem; line-height:1.35; margin-top:24px; }
+  h1 span { color:#6FB1FF; }
+  .lead { margin:8px auto 0; max-width:320px; color:var(--muted); font-size:.98rem; line-height:1.45; }
+
+  .links { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:24px; }
+  .tile { display:flex; flex-direction:column; align-items:center; gap:10px; padding:18px 6px 14px; text-decoration:none; color:var(--text);
+    background:var(--glass); border:1px solid var(--line); border-radius:22px; -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.18); transition:transform .18s, border-color .18s; }
+  .tile:hover { transform:translateY(-4px); border-color:rgba(255,255,255,.45); }
+  .tile:active { transform:scale(.96); }
+  .tile:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+  .tile strong { font-family:'Sora',sans-serif; font-weight:600; font-size:.92rem; }
+  .tile small { font-size:.78rem; color:var(--muted); margin-top:-7px; }
+  .badge { width:58px; height:58px; border-radius:18px; display:grid; place-items:center; box-shadow:0 10px 24px -8px var(--glow); }
+  .badge svg { width:30px; height:30px; }
+  .badge.ig { background:linear-gradient(45deg,#FEDA75,#FA7E1E 28%,#D62976 55%,#962FBF 78%,#4F5BD5); --glow:#D62976; }
+  .badge.wa { background:#25D366; --glow:#25D366; }
+  .badge.gg { background:#fff; --glow:#4285F4; }
+  .badge.gg i { font:800 2rem/1 'Sora',sans-serif; font-style:normal; background:conic-gradient(from -45deg,#4285F4 0 25%,#34A853 0 50%,#FBBC05 0 75%,#EA4335 0); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  /* ===== 3D phone showroom ===== */
+  .stage { position:relative; height:350px; margin:30px 0 0; perspective:1100px; }
+  .stage::after { content:""; position:absolute; left:4%; right:4%; bottom:2px; height:46px; border-radius:50%; background:radial-gradient(ellipse, rgba(80,160,255,.6), rgba(80,160,255,0) 70%); filter:blur(8px); }
+  .tilt, .rig { position:absolute; inset:0; transform-style:preserve-3d; }
+  .tilt { transition:transform .2s ease-out; }
+  .rig { animation:sway 9s ease-in-out infinite alternate; }
+  @keyframes sway { from { transform:rotateY(-7deg); } to { transform:rotateY(7deg); } }
+  .unit { position:absolute; bottom:26px; left:50%; transform-style:preserve-3d; }
+  .u-c { transform:translateX(-50%) translateZ(70px); }
+  .u-l { transform:translateX(-128%) rotateY(26deg); }
+  .u-r { transform:translateX(28%) rotateY(-26deg); }
+
+  .phone { position:relative; width:15em; height:31em; padding:.55em; border-radius:3.8em; animation:float 5.5s ease-in-out infinite; animation-delay:var(--d,0s);
+    background:linear-gradient(145deg,#9AA3B2,#2C323D 28%,#10141B 58%,#667084);
+    box-shadow:1px 1px 0 #3C4655,2px 2px 0 #353E4C,3px 3px 0 #2E3643,4px 4px 0 #272E3A,5px 5px 0 #202632,6px 6px 0 #1A1F29, 16px 30px 40px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.3); }
+  .u-c .phone { font-size:10px; } .u-l .phone, .u-r .phone { font-size:8px; --d:.8s; } .u-r .phone { --d:1.6s; }
+  @keyframes float { 50% { transform:translateY(-10px); } }
+  .phone::before { content:""; position:absolute; right:-.45em; top:8em; width:.4em; height:4.6em; border-radius:.2em; background:linear-gradient(#7B8598,#3A4150); }
+  .phone::after { content:""; position:absolute; left:-.45em; top:7em; width:.4em; height:2.6em; border-radius:.2em; background:linear-gradient(#7B8598,#3A4150); box-shadow:0 3.6em 0 #4A5365; }
+  .scr { position:relative; width:100%; height:100%; border-radius:3.3em; border:.45em solid #04060A; overflow:hidden; background:var(--wp); color:#fff; font-family:'Sora',sans-serif; }
+  .scr::after { content:""; position:absolute; inset:0; background:linear-gradient(118deg, rgba(255,255,255,.34) 0, rgba(255,255,255,.08) 28%, transparent 40%); pointer-events:none; }
+  .isl { position:absolute; top:.9em; left:50%; width:var(--iw,4.8em); height:1.35em; border-radius:1em; background:#000; transform:translateX(-50%); box-shadow:inset -.35em 0 0 -.1em #0B1A33; }
+  .sb { position:absolute; top:.95em; left:1.9em; right:1.9em; display:flex; justify-content:space-between; font-size:1.05em; font-weight:600; }
+  .clk { margin-top:.95em; text-align:center; font-size:5.4em; font-weight:600; line-height:1; letter-spacing:-.04em; text-shadow:0 .1em .4em rgba(0,0,0,.3); }
+  .nm { margin-top:.9em; text-align:center; font-size:1.25em; font-weight:700; }
+  .nm small { display:block; margin-top:.3em; font-family:'Hind',sans-serif; font-weight:500; font-size:.78em; opacity:.85; }
+  .apps { position:absolute; left:1.6em; right:1.6em; bottom:3.2em; display:grid; grid-template-columns:repeat(4,1fr); gap:1.1em .9em; }
+  .apps u { aspect-ratio:1; border-radius:.9em; box-shadow:0 .2em .5em rgba(0,0,0,.3), inset 0 .1em 0 rgba(255,255,255,.35); }
+  .apps u:nth-child(4n+1){background:linear-gradient(#FF8A5B,#E5322D)} .apps u:nth-child(4n+2){background:linear-gradient(#6FD3FF,#2D8CFF)} .apps u:nth-child(4n+3){background:linear-gradient(#7BE495,#1FA855)} .apps u:nth-child(4n){background:linear-gradient(#FFE27A,#F2A100)}
+  .home { position:absolute; bottom:1em; left:50%; width:5em; height:.35em; border-radius:1em; background:rgba(255,255,255,.85); transform:translateX(-50%); }
+  .wc { --wp:radial-gradient(110% 70% at 80% 0%, rgba(255,122,69,.9), transparent 60%), linear-gradient(170deg,#1D35A0,#0A1233 72%); }
+  .wl { --wp:linear-gradient(160deg,#16C3B0,#2D6CDF 52%,#6A2CCF); --iw:1.35em; }
+  .wr { --wp:linear-gradient(160deg,#FFB347,#FF5E62 52%,#6A1B9A); --iw:1.35em; }
+
+  .brands { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:18px; padding:14px 16px; border:1px solid var(--line); border-radius:18px; background:var(--glass); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); }
+  .brands span { font-family:'Sora',sans-serif; font-size:.9rem; color:#D3DFEE; }
+  .finance { margin-top:16px; font-size:.78rem; color:var(--muted); }
+  .chips { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:8px; }
+  .chips span { font-size:.8rem; font-weight:500; padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.06); }
+  .info, .offers, .emi { margin-top:18px; text-align:left; }
+  .info { padding:16px; border:1px solid var(--line); border-radius:20px; background:var(--glass); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); text-align:center; }
+  .status { display:inline-flex; align-items:center; gap:8px; font-family:'Sora',sans-serif; font-weight:600; font-size:.95rem; }
+  .dot { width:10px; height:10px; border-radius:50%; background:#2ECC71; animation:ping 1.8s infinite; }
+  .closed .dot { background:#FF5A5F; animation:none; }
+  @keyframes ping { 0% { box-shadow:0 0 0 0 rgba(46,204,113,.6); } 70%,100% { box-shadow:0 0 0 9px rgba(46,204,113,0); } }
+  .hours { margin-top:4px; color:var(--muted); font-size:.9rem; }
+  .cta { display:flex; gap:10px; margin-top:14px; }
+  .btn { flex:1; text-decoration:none; text-align:center; font-weight:600; padding:13px 8px; border-radius:14px; background:var(--blue); color:#fff; }
+  .btn.alt { background:rgba(255,255,255,.1); border:1px solid var(--line); }
+  .btn:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+  .offers h2, .emi h2 { font-family:'Sora',sans-serif; font-size:1.05rem; margin:0 0 10px 2px; }
+  .ofs { display:grid; gap:10px; }
+  .of { padding:14px 16px; border-radius:18px; border:1px solid var(--line); background:linear-gradient(120deg,rgba(45,140,255,.24),rgba(123,63,228,.18)); }
+  .of b { display:block; font-family:'Sora',sans-serif; font-size:.98rem; margin-bottom:2px; }
+  .of span { font-size:.88rem; color:#C5D3E6; }
+  .emi { text-align:center; } .emi h2 { margin-left:0; }
+  .idfc { position:relative; padding:18px 16px 16px; border-radius:20px; border:1px solid rgba(255,215,130,.65); background:linear-gradient(120deg,#8E1B3A,#C8365B); box-shadow:0 14px 30px -12px rgba(200,54,91,.7); }
+  .idfc .tag { display:inline-block; font-size:.72rem; font-weight:600; padding:3px 10px; border-radius:999px; background:#FFD782; color:#4A1020; }
+  .idfc strong { display:block; margin-top:8px; font-family:'Sora',sans-serif; font-size:1.25rem; }
+  .idfc small { display:block; margin-top:3px; font-size:.88rem; color:#FFE3EA; }
+  .emi .chips { margin-top:12px; }
+  footer { margin-top:24px; font-size:.75rem; color:#7387A0; }
+  @media (max-width:360px) { .brands span { font-size:.75rem; } .logo b { font-size:1.6rem; } .stage { transform:scale(.9); transform-origin:top center; } }
+  @media (prefers-reduced-motion:reduce) { .orb, .rig, .phone { animation:none; } .tilt, .tile { transition:none; } }
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+
+<main>
+  <div class="logo">
+    <svg viewBox="0 0 30 46" aria-hidden="true"><rect x="2" y="2" width="26" height="42" rx="6" fill="none" stroke="#E5322D" stroke-width="3"/><rect x="11" y="6" width="8" height="2.5" rx="1.2" fill="#E5322D"/><circle cx="15" cy="38" r="1.8" fill="#E5322D"/></svg>
+    <div class="w"><b>SHIVRAJ</b><small>ENTERPRISES</small></div>
+  </div>
+
+  <h1>Welcome to Shivraj Enterprises <span>(Mobile Shopy)</span></h1>
+  <p class="lead">Latest offers aur naye smartphones ki updates ke liye humse social media par judein.</p>
+
+  <nav class="links" aria-label="Social links">
+    <a class="tile" id="igLink" target="_blank" rel="noopener">
+      <span class="badge ig"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></span>
+      <strong>Instagram</strong><small>Follow karein</small>
+    </a>
+    <a class="tile" id="waLink" target="_blank" rel="noopener">
+      <span class="badge wa"><svg viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.1 14.4L2.5 21.5l4.7-1.3A9.5 9.5 0 1 0 12 2.5z" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><g transform="translate(6.4 6.4) scale(.45)"><path fill="#fff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></g></svg></span>
+      <strong>WhatsApp</strong><small>Join karein</small>
+    </a>
+    <a class="tile" id="gLink" target="_blank" rel="noopener">
+      <span class="badge gg"><i>G</i></span>
+      <strong>Google</strong><small>Review dein</small>
+    </a>
+  </nav>
+
+  <div class="stage" aria-hidden="true">
+    <div class="tilt"><div class="rig">
+      <div class="unit u-l"><div class="phone"><div class="scr wl"><i class="isl"></i><div class="sb"><span>10:09</span><span>5G</span></div><div class="clk">10:09</div><div class="apps"></div><i class="home"></i></div></div></div>
+      <div class="unit u-r"><div class="phone"><div class="scr wr"><i class="isl"></i><div class="sb"><span>10:09</span><span>5G</span></div><div class="clk">10:09</div><div class="apps"></div><i class="home"></i></div></div></div>
+      <div class="unit u-c"><div class="phone"><div class="scr wc"><i class="isl"></i><div class="sb"><span>10:09</span><span>5G</span></div><div class="clk">10:09</div><div class="nm">Shivraj Mobile<small>Latest offers inside</small></div><div class="apps"></div><i class="home"></i></div></div></div>
+    </div></div>
+  </div>
+
+  <section class="info">
+    <div class="status" id="status"><i class="dot"></i><span id="stText">Timing check ho rahi hai...</span></div>
+    <p class="hours">Shop timing: 11:00 AM - 10:00 PM</p>
+    <div class="cta"><a class="btn" id="callBtn">Call karein</a><a class="btn alt" id="mapBtn" target="_blank" rel="noopener">Rasta dekhein</a></div>
+  </section>
+
+  <section class="offers"><h2>Aaj ke offers</h2><div class="ofs" id="offers"></div></section>
+
+  <div class="brands" aria-label="Brands" style="margin-top:22px">
+    <span style="font-weight:600">Apple</span><span style="font-weight:800;letter-spacing:1px">SAMSUNG</span><span style="font-weight:700">oppo</span><span>vivo</span><span style="font-weight:600">realme</span>
+  </div>
+
+  <section class="emi">
+    <h2>Easy EMI available</h2>
+    <div class="idfc"><span class="tag">Priority EMI partner</span><strong>IDFC FIRST Bank</strong><small>Aasan kisto mein naya smartphone</small></div>
+    <div class="chips"><span>Bajaj Finserv</span><span>TVS Credit</span><span>Home Credit</span><span>HDB Financial</span></div>
+  </section>
+
+  <footer>&copy; <span id="yr"></span> Shivraj Enterprises. All rights reserved.</footer>
+</main>
+
+<script>
+  // ====== SOCIAL LINKS (yahin se badal sakte hain) ======
+  const LINKS = {
+    instagram: "https://www.instagram.com/shivraj_mobile_2022/",
+    whatsapp:  "https://wa.me/919022951981?text=Hello%20Shivraj%20Mobile%2C%20mujhe%20latest%20offers%20jaanne%20hain.",  // customers ke liye isse badal kar wa.me/91XXXXXXXXXX ya group invite link lagayein
+    google:    "https://www.google.com/maps/place/Shivraj+Mobile/@18.6699212,73.7983076,21z/data=!4m6!3m5!1s0x3bc2b7e582934771:0x9f3c8ff96ef93d14!8m2!3d18.669956!4d73.7982684!16s%2Fg%2F11scv9ppyv"
+  };
+  // ======================================================
+  document.getElementById("igLink").href = LINKS.instagram;
+  document.getElementById("waLink").href = LINKS.whatsapp;
+  document.getElementById("gLink").href  = LINKS.google;
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  // ====== SHOP DETAILS (yahin se badal sakte hain) ======
+  const SHOP = {
+    phone: "",   // 10 digit number, jaise "9876543210" (khaali rakha to Call button chhup jaayega)
+    offers: [
+      { t: "Diwali Special", d: "Selected smartphones par khaas festival offers" },
+      { t: "Exchange Offer", d: "Purana phone dekar naya phone aasani se lein" },
+      { t: "Easy EMI", d: "IDFC FIRST Bank ke saath aasan kisto mein" }
+    ]
+  };
+  // =======================================================
+  document.getElementById("offers").innerHTML = SHOP.offers.map(o => `<div class="of"><b>${o.t}</b><span>${o.d}</span></div>`).join("");
+  const callBtn = document.getElementById("callBtn");
+  if (SHOP.phone) callBtn.href = "tel:+91" + SHOP.phone; else callBtn.style.display = "none";
+  document.getElementById("mapBtn").href = LINKS.google;
+
+  // open / closed badge (11 AM - 10 PM)
+  function updateStatus() {
+    const d = new Date(), m = d.getHours() * 60 + d.getMinutes(), open = 11 * 60, close = 22 * 60;
+    const box = document.getElementById("status"), txt = document.getElementById("stText");
+    if (m >= open && m < close) {
+      box.classList.remove("closed");
+      txt.textContent = close - m <= 30 ? "Jaldi band hone wali hai (10 PM tak)" : "Abhi khula hai · 10 PM tak";
+    } else {
+      box.classList.add("closed");
+      txt.textContent = "Abhi band hai · " + (m < open ? "aaj" : "kal") + " 11 AM se khulegi";
+    }
+  }
+  updateStatus(); setInterval(updateStatus, 60000);
+
+  document.querySelectorAll(".apps").forEach(a => { a.innerHTML = "<u></u>".repeat(8); });
+
+  // phones follow finger / mouse for a real 3D feel
+  const tilt = document.querySelector(".tilt");
+  addEventListener("pointermove", e => {
+    const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+    tilt.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 8}deg)`;
+  });
+</script>
+</body>
+</html>
